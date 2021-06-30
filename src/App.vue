@@ -1,11 +1,12 @@
 <template>
-  <!-- <HelloWorld msg="Hello Vue 3 + Vite" /> -->
-  <TableData />
+  <div class="container">
+    <DataTable />
+  </div>
 </template>
 
 <script setup>
 // import HelloWorld from './components/HelloWorld.vue';
-import TableData from './components/tableData/TableData.vue';
+import DataTable from './views/DataTable.vue';
 
 // This starter template is using Vue 3 experimental <script setup> SFCs
 // Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
@@ -14,6 +15,9 @@ import TableData from './components/tableData/TableData.vue';
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  border: 2px solid gold;
+}
+
+.container {
+  margin: 5px;
 }
 </style>

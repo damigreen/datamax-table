@@ -4,7 +4,6 @@ table {
 
 }
 
-th, 
 
 th, tr {
   text-align: left;
@@ -20,9 +19,9 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-head-wrap {
+.header-wrap {
   display: flex;
-  /* justify-content: center; */
-  /* align-items: left; */
+  justify-content: space-between;
+  align-items: left;
   padding: 5px;
 }
