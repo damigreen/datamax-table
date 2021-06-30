@@ -1,0 +1,28 @@
+table {
+  /* background-color: red; */
+  border-collapse: collapse;
+
+}
+
+th, 
+
+th, tr {
+  text-align: left;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 9px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+head-wrap {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: left; */
+  padding: 5px;
+}
