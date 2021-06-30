@@ -1,0 +1,22 @@
+.table-wrap {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid gold;
+}
+
+.flex-row {
+  margin-bottom: 3px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mg-r {
+  margin-right: 2px;;
+}
+
+.select {
+  padding: 3px;
+  width: 60px;
+  border-radius: 3px;
+}
