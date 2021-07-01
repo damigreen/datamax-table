@@ -2,7 +2,11 @@
   width: 100%;
   max-width: 100%;
   height: auto;
-  border: 2px solid gold;
+  border: 2px solid red;
+}
+
+.filter-wrapper {
+  border: 2px solod gold;
 }
 
 .flex-row {
@@ -19,4 +23,39 @@
   padding: 3px;
   width: 60px;
   border-radius: 3px;
+}
+
+.pagination-wrap {
+  box-sizing: border-box;
+  float: right;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #DCDCDC;
+  border-radius: 3px;
+  margin-top: 1rem;
+}
+
+.paginate-button {
+  display: inline-block;
+  padding: 0 5px;
+  margin: 1rem 0;
+  border: none;
+  border-right: 1px solid #DCDCDC;
+  height: 100%;
+  background: none;
+  font-size: 0.68727rem;
+}
+
+.paginate-number {
+  display: inline-block;
+  font-size: 0.88727rem;
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+  padding: 0 6px;
+  padding-right: 8px;
+  border-right: 1px solid #DCDCDC;
+  height: 100%;
+  color: #0091F7;
 }

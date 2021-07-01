@@ -16,6 +16,7 @@
     </thead>
     <tbody>
       <tr v-for="td in TableBase" :key="td" class=head-wrap>
+      <!-- <tr v-for="td in paginatedData" :key="td" class=head-wrap> -->
         <td>{{ td.name }}</td>
         <td>{{ td.isbn }}</td>
         <td>{{ td.authors }}</td>
@@ -27,22 +28,6 @@
     </tbody>
   </table>  
 
-  <div class='pagination-wrap'>
-      <!-- <span> -->
-      <!-- 
-            (-) [1] [2] [3] [4] [5] (+)    - [6] [7] [8] +
-      -->
-
-    <!-- <button v-if='pageNumber <= Math.ceil(this.entries.length / this.currentEntry)' @click='pageNumber = pageNumber - 1' class='paginate-button'>PREV</button> -->
-    <button @click='pageNumber = pageNumber === 1 ? 1 : pageNumber - 1' class='paginate-button'>PREV</button>
-    <span class="paginate-number" v-for="(item, i) in numberOfPages" :key="item">
-        <button >{{ i + 1 }} [{{pageNumber}}]</button>
-    </span>
-    <button @click='pageNumber = pageNumber + 1' class='paginate-button' style="margin-left: 4px">NEXT</button>
-
-    <slot name='data' :pageNumber='pageNumber' :numberOfPages='numberOfPages' />
-  </div>
-  <span style='background: red; padding: 5px'>{{this.pageNumber}}</span>
 </template>
 
 <script>
@@ -65,18 +50,26 @@ export default {
     TableBase() {
       return this.entries || null;
     },
+    // paginatedData () {
+    //   const start = (this.pageNumber * 8) - (8 - 1);
+    //   const end = start + (8 - 1);
+    //   console.log(this.pageNumber)
+    //   console.log('---------------------')
+    //   console.log(start);
+    //   console.log(end)
+    //   this.pageNumber = this.pageNumber + 1;
+    //   this.entries = this.entries.slice(start, end)
+    // },
   },
-  methods: {
-    prevPage () {
-        console.log(this.pageNumber);
-      
-      this.pageNumber = this.pageNumber - 1;
-    },
-    nextPage () {
-      console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
-      this.pageNumber = this.pageNumber + 1;
-    }
-  },
+  // methods: {
+  //   prev () {
+  //     console.log('--------------------------------------', this.pageNumber)
+  //   },
+  //   nextPage () {
+  //     console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+  //     this.pageNumber = this.pageNumber + 1;
+  //   }
+  // },
 }
 
 </script>
