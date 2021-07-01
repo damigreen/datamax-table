@@ -19,7 +19,7 @@
       <!-- <tr v-for="td in paginatedData" :key="td" class=head-wrap> -->
         <td>{{ td.name }}</td>
         <td>{{ td.isbn }}</td>
-        <td>{{ td.authors }}</td>
+        <td v-for="au in td.authors" :key="au">{{ au }}</td>
         <td>{{ td.numberOfPages }}</td>
         <td>{{ td.country }}</td>
         <!-- yyyy - mm - dd -->
