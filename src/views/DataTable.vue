@@ -1,10 +1,9 @@
 <template #data='pageNumber'>
   <div class="table-wrap">
-    <div class='filter-wrapper'>
-      <div class="flex-row">Show
+    <h2> Data-Max Book Table</h2>
+    <div class='filter-wrapper flex-row'>
+      <div>Show
         <span class="mg-r">
-          <!-- <select v-model="currentEntry" @change="paginateEntries" class="select"> -->
-
           <select v-model="currentEntry" @change="filEnt" class="select">
             <option v-for="se in showEntries" :key="se" :value="se" >{{ se }}</option>
           </select>
@@ -12,9 +11,8 @@
       </div>
 
       <div class='search-wrap'>
-        <input type="text" v-model="search" @keyup="filteredList"  placeholder="Search book.."/>
-        <!-- <input type="text" v-model="search" v-on="filteredList" placeholder="Search book.."/> -->
         <label>Search book:</label>
+        <input type="text" v-model="search" @keyup="filteredList" />
       </div>
 
     </div>
@@ -28,28 +26,30 @@
       :numberOfPages="pageToDisplay"
       @prevPage="prevPage"
     />
-    <div class='show-info'>
-      <div>Show {{ 4 }} to {{6}} of {{ this.currentEntry }}</div>
-    </div>
+    <div class='flex-row mg-top' >
+      <div class='show-info flex-row'>
+        <div class="flex-row">Showing {{ this.start }} to {{ this.end }} of {{ this.currentEntry }}</div>
+      </div>
 
       <div class='pagination-wrap'>
-      <!-- <span> -->
-      <!-- 
-            (-) [1] [2] [3] [4] [5] (+)    - [6] [7] [8] +
-      -->
+        <!-- <span> -->
+        <!-- 
+              (-) [1] [2] [3] [4] [5] (+)    - [6] [7] [8] +
+        -->
 
-    <button :disabled="pageNumber === 1"  @click='prevPage' :key="1" class='paginate-button'>PREV</button>
-    <span class="paginate-number" v-for="(item, i) in 2" :key="item">
-        <button >{{ i + 1 }} [{{pageNumber}}]</button>
-    </span>
-    <button :disabled="pageNumber >= 2" @click='nextPage' class='paginate-button' style="margin-left: 4px">NEXT</button>
+        <button :disabled="pageNumber === 1"  @click='prevPage' :key="1" class='paginate-button'>PREV</button>
+        <span class="paginate-number" v-for="(item, i) in 2" :key="item">
+            <button @click='showPage(i+1)'>{{ i + 1 }}</button>
+        </span>
+        <button :disabled="pageNumber >= 2" @click='nextPage' class='paginate-button' style="margin-left: 4px">NEXT</button>
 
-    <slot name='data' :pageNumber='pageNumber' :numberOfPages='numberOfPages' />
-  </div>
-  <span :key='this.pageNumber' style='background: red; padding: 5px'>{{this.pageNumber}}</span>
-  <span :key='this.numberOfPages' style='background: green; padding: 5px'>{{this.numberOfPages}}</span>
+        <slot name='data' :pageNumber='pageNumber' :numberOfPages='numberOfPages' />
+      </div>
 
-  </div>
+      </div>
+      <!-- <span :key='this.pageNumber' style='background: red; padding: 5px'>{{this.pageNumber}}</span>
+      <span :key='this.numberOfPages' style='background: green; padding: 5px'>{{this.numberOfPages}}</span> -->
+    </div>
 
 </template>
 <script>
@@ -78,6 +78,9 @@ export default {
       numberOfPages: 1,
       paginatedDataArray: [],
       search: '',
+      start: 0,
+      end: 0,
+      index: 0,
     }
   },
   components: {
@@ -90,6 +93,7 @@ export default {
 
     this.paginateEntries().then(res => {
       this.filteredEntries = res;
+      this.paginatedData;
     });
   },
   /* 
@@ -110,11 +114,19 @@ export default {
       return Math.ceil(this.entries.length / 8);
     },
     paginatedData () {
-      const num = Math.ceil(this.entries.length / 8)
       const start = (this.pageNumber * 8) - (8 - 1);
       const end = start + (8 - 1);
-      console.log(this.pageNumber)
-      this.filteredEntries = this.entries.slice(start - 1, end)  
+      this.start = start
+      this.end = end
+      this.filteredEntries = this.entries.slice(start - 1, end);
+    },
+    showPageNumber () {
+      
+      const start = (this.index * 8) - (8 - 1);
+      const end = start + (8 - 1);
+      this.start = start
+      this.end = end
+      this.filteredEntries = this.entries.slice(start - 1, end);
     },
     filteredList () {
       const matchName = this.entries.filter(entr => {
@@ -154,6 +166,11 @@ export default {
       this.pageNumber = this.pageNumber - 1;
       this.paginatedData;
     },
+    showPage (num) {
+      console.log(num);
+      this.index = num;
+      this.showPageNumber;
+    }
   }
 }
 </script>
