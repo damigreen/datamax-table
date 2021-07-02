@@ -121,7 +121,6 @@ export default {
       this.filteredEntries = this.entries.slice(start - 1, end);
     },
     showPageNumber () {
-      
       const start = (this.index * 8) - (8 - 1);
       const end = start + (8 - 1);
       this.start = start
@@ -131,22 +130,21 @@ export default {
     filteredList () {
       const matchName = this.entries.filter(entr => {
         
-        console.log(entr.name.toLowerCase())
-        console.log(this.search.toLowerCase())
         const ifMatched = entr.name.toLowerCase().includes(this.search.toLowerCase()) 
-        console.log(ifMatched);
         return ifMatched ? entr.name : null;
-
-
       });
       this.filteredEntries = matchName;
 
-      const matchAuthor = this.entries.filter(entr => {
-        
-        const ifMatched = entr.name.toLowerCase().includes(this.search.toLowerCase()) 
-        return ifMatched ? entr.name : null;
-      });
-      this.filteredEntries = matchAuthor;
+      // const matchAuthor = this.entries.filter(entr => {
+      //   const ifMatched = entr.authors.forEach(a => {
+      //     console.log(a.toLowerCase());
+      //     console.log(this.search.toLowerCase());
+      //     a.toLowerCase().includes(this.search.toLowerCase());
+      //   });
+      //   console.log(ifMatched);
+      //   return ifMatched ? entr.name : null;
+      // });
+      // this.filteredEntries = matchAuthor;
     },
   },
   methods: {
