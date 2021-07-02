@@ -103,9 +103,6 @@ export default {
         this.filteredEntries = res;
       });
     },
-    showInfo() {
-      console.log('show info')
-    },
     paginateTable () {
       return Math.ceil(this.entries.length / this.currentEntry);
     },
@@ -114,13 +111,9 @@ export default {
     },
     paginatedData () {
       const num = Math.ceil(this.entries.length / 8)
-      console.log('num====================',num);
       const start = (this.pageNumber * 8) - (8 - 1);
       const end = start + (8 - 1);
-      console.log('---------------------');
       console.log(this.pageNumber)
-      console.log('start============',start-1);
-      console.log('end============',end);
       this.filteredEntries = this.entries.slice(start - 1, end)  
     },
     filteredList () {
@@ -138,13 +131,8 @@ export default {
 
       const matchAuthor = this.entries.filter(entr => {
         
-        console.log(entr.name.toLowerCase());
-        console.log(this.search.toLowerCase());
         const ifMatched = entr.name.toLowerCase().includes(this.search.toLowerCase()) 
-        console.log(ifMatched);
         return ifMatched ? entr.name : null;
-
-
       });
       this.filteredEntries = matchAuthor;
     },
@@ -166,16 +154,6 @@ export default {
       this.pageNumber = this.pageNumber - 1;
       this.paginatedData;
     },
-    // paginatedData () {
-    //   const start = (this.pageNumber * 8) - (8 - 1);
-    //   const end = start + (8 - 1);
-    //   console.log(this.pageNumber)
-    //   console.log('---------------------')
-    //   console.log(start);
-    //   console.log(end)
-    //   this.pageNumber = this.pageNumber + 1;
-    //   this.entries = this.entries.slice(start, end)
-    // },
   }
 }
 </script>
