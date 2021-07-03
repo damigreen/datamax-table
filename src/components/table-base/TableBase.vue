@@ -18,7 +18,6 @@
         </td>
         <td>{{ td.numberOfPages }}</td>
         <td>{{ td.country }}</td>
-        <!-- yyyy - mm - dd -->
         <td>
           {{
             td.released.slice(0, 10)

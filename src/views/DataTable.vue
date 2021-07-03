@@ -16,9 +16,6 @@
       </div>
 
     </div>
-
-    <!-- <TableBase :columns="columns" :entries="entries"  /> -->
-    <!-- <TableBase  :columns="columns" :entries="filteredEntries" :pageNumber="paginateTable" :nextPage="nextPage" :prevPage="prevPage"  /> -->
     <TableBase
       :columns="columns"
       :entries="filteredEntries"
@@ -47,8 +44,6 @@
       </div>
 
       </div>
-      <!-- <span :key='this.pageNumber' style='background: red; padding: 5px'>{{this.pageNumber}}</span>
-      <span :key='this.numberOfPages' style='background: green; padding: 5px'>{{this.numberOfPages}}</span> -->
     </div>
 
 </template>
